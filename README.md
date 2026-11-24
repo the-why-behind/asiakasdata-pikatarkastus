@@ -1,9 +1,7 @@
 # Asiakasdatan pikatarkastus
 
 **Kokeile sovellusta:** https://asiakasdata-pikatarkastus.streamlit.app/
-Ei asennuksia eikä kirjautumista – sovellus aukeaa suoraan selaimessa.
-
-Tein tämän demon hakiessani 70/30 Digitalin Data & Insight -harjoittelijaksi.
+Ei tarvitse kirjautua tai asentaa mitään, sovellus aukeaa suoraan selaimessa.
 
 🎬 **VIDEO 0 TÄHÄN** – koko sovellus lyhyesti (n. 30 s)
 
@@ -11,15 +9,15 @@ Tein tämän demon hakiessani 70/30 Digitalin Data & Insight -harjoittelijaksi.
 
 ## Miksi tein tämän
 
-70/30 Digital keskittyy kokonaan yritysten omaan asiakasdataan (1st party data). Moni toimeksianto alkaa samalla tavalla: asiakkaan data pitää ensin käydä läpi – onko se kunnossa, keitä asiakkaat ovat ja mistä kannattaa aloittaa.
+Tutustuin 70/30 Digitaliin yrityksen julkisten tietojen kautta. Yritys kertoo olevansa Suomen ainoa markkinointitoimisto, joka keskittyy kokonaan asiakkaidensa omaan dataan. Sen palveluihin kuuluvat muun muassa asiakasdatan auditointi ja segmentointi. Asiakkaista suuri osa on vähittäiskauppoja, kuten Robers Coffee ja Pentik. Työntekijöitä yrityksessä on 1–10, eli kyse on pienestä yrityksestä.
 
-Halusin näyttää, miten ajattelen dataa ja liiketoimintaa yhdessä. Siksi en tehnyt satunnaista analyysiä, vaan työkalun, joka jäljittelee asiakasdatan auditoinnin ja segmentoinnin ensimmäistä vaihetta.
+Ennen kuin asiakkaalle voi suunnitella automaatioita tai kanta-asiakasohjelmaa, on selvitettävä, onko data käyttökelpoista ja keitä asiakkaat ovat. Tämä vaihe toistuu jokaisen asiakkaan kohdalla lähes samanlaisena, ja pienessä tiimissä se on pois varsinaisesta asiantuntijatyöstä.
 
-## Mitä ongelmaa se ratkaisee
+Siksi tein työkalun, joka hoitaa auditoinnin ja segmentoinnin ensimmäisen vaiheen automaattisesti. Koska yrityksen asiakkaat ovat pääosin vähittäiskauppoja, työkalu on suunniteltu tilaus- ja kanta-asiakasdatalle.
 
-Asiakasdatan ensimmäinen läpikäynti tehdään usein käsin: data siivotaan, ongelmat etsitään ja asiakkaat ryhmitellään taulukkolaskennassa. Se vie aikaa, ja tulokset vaihtelevat tekijän mukaan.
+Näin jokaisen uuden asiakkaan datan ensikatsaus hoituu paljon nopeammin.
 
-Pikatarkastus tekee tämän muutamassa minuutissa ja aina samalla tavalla. Tulokset antavat konkreettisen lähtökohdan asiakaskeskustelulle: *"Datassanne on nämä ongelmat, ja nämä kolme toimenpidettä tuottaisivat eniten."*
+Johtopäätökseni perustuvat julkisiin tietoihin, joten osa niistä on oletuksia.
 
 ## Mikä sovellus on
 
@@ -121,7 +119,3 @@ source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
-
----
-
-**Tekijä:** Anastasiia Nevalahti
