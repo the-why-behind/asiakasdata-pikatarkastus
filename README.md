@@ -1,6 +1,7 @@
 # Asiakasdatan pikatarkastus
 
 **Kokeile sovellusta:** https://asiakasdata-pikatarkastus.streamlit.app/
+
 Ei tarvitse kirjautua tai asentaa mitään, sovellus aukeaa suoraan selaimessa.
 
 🎬 **VIDEO 0 TÄHÄN** – koko sovellus lyhyesti (n. 30 s)
