@@ -238,6 +238,21 @@ kassajärjestelmäviennille. Mallin saat sivupalkista.
         except Exception as e:  # noqa: BLE001
             st.error(f"Asiakasdatan käsittely epäonnistui: {e}")
             customers = None
+    elif guess_column(raw_o.columns, "consent"):
+        # Asiakastiedot (esim. markkinointilupa) tulivat tilausdatan mukana, kun
+        # kaikki tiedostot ladattiin kerralla -> luetaan ne sieltä.
+        cons_col = guess_column(raw_o.columns, "consent")
+        em_col = guess_column(raw_o.columns, "email")
+        if em_col == col_cust:
+            em_col = None if "@" not in str(raw_o[col_cust].dropna().head(1).tolist()) else em_col
+        try:
+            customers = prepare_customers(raw_o.drop_duplicates(subset=[col_cust]),
+                                          col_cust, em_col, cons_col)
+            st.caption(f"Markkinointiluvat luettiin tilausdatan sarakkeesta *{cons_col}*"
+                       + (f" ja sähköpostit sarakkeesta *{em_col}*." if em_col else ".")
+                       + " Voit myös ladata asiakasdatan erikseen alla olevaan kenttään 2.")
+        except Exception:  # noqa: BLE001
+            customers = None
 
 if orders.empty:
     st.error("Datasta ei löytynyt yhtään kelvollista tilausta. Tarkista sarakevalinnat: "
