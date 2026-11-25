@@ -103,11 +103,14 @@ Ladattua dataa käsitellään vain istunnon ajan, eikä sitä tallenneta. Kaikki
 
 ## Testattu datalla
 
-- Esimerkkidata Custobarin vientimuodossa (kuvitteellinen)
-- Testidata A: Shopify + Klaviyo (kuvitteellinen)
-- Testidata B: suomalainen kassajärjestelmä (kuvitteellinen)
-- [Olist Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) – oikea verkkokauppadata, n. 100 000 tilausta
-- [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) – oikea verkkokauppadata, yli miljoona riviä (CC BY 4.0)
+**Itse tehty testidata (kuvitteellinen):**
+- Esimerkkidata, joka on samassa muodossa kuin Custobarista ladattu tiedosto
+- Testidata A, joka jäljittelee Shopifyn ja Klaviyon tiedostoja
+- Testidata B, joka jäljittelee suomalaisen kassajärjestelmän tiedostoja
+
+**Julkinen, oikea data:**
+- [Olist Brazilian E-Commerce](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce): brasilialaisen verkkokaupan data, noin 100 000 tilausta
+- [UCI Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii): brittiläisen verkkokaupan data, yli miljoona riviä (lisenssi CC BY 4.0)
 
 ## Tekniikka
 
