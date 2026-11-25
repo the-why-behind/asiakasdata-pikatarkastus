@@ -4,39 +4,46 @@
 
 Ei tarvitse kirjautua tai asentaa mitään, sovellus aukeaa suoraan selaimessa.
 
-🎬 **VIDEO 0 TÄHÄN** – koko sovellus lyhyesti (n. 30 s)
+
+
+https://github.com/user-attachments/assets/4763de53-4c4a-43bf-a06f-53a3ed687224
+
+
 
 ---
 
 ## Ongelma ja ratkaisu
 
+### Taustatoedot
 Tutustuin 70/30 Digitaliin yrityksen julkisten tietojen kautta. Yritys kertoo olevansa Suomen ainoa markkinointitoimisto, joka keskittyy kokonaan asiakkaidensa omaan dataan. Sen palveluihin kuuluvat muun muassa asiakasdatan auditointi ja segmentointi. Asiakkaista suuri osa on vähittäiskauppoja, kuten Robers Coffee ja Pentik. Työntekijöitä yrityksessä on 1–10, eli kyse on pienestä yrityksestä.
 
+### Ongelma lyhyesti
 Ennen kuin asiakkaalle voi suunnitella automaatioita tai kanta-asiakasohjelmaa, on selvitettävä, onko data käyttökelpoista ja keitä asiakkaat ovat. Tämä vaihe toistuu jokaisen asiakkaan kohdalla lähes samanlaisena, ja pienessä tiimissä se on pois varsinaisesta asiantuntijatyöstä.
 
-Siksi tein työkalun, joka hoitaa auditoinnin ja segmentoinnin ensimmäisen vaiheen automaattisesti. Koska yrityksen asiakkaat ovat pääosin vähittäiskauppoja, työkalu on suunniteltu tilaus- ja kanta-asiakasdatalle.
+### Ratkaisu
+Siksi tein työkalun, joka hoitaa auditoinnin ja segmentoinnin ensimmäisen vaiheen automaattisesti. Työkalu ryhmittelee asiakkaat ja tekee niistä listan, jota voi käyttää jatkotyössä. Koska yrityksen asiakkaat ovat pääosin vähittäiskauppoja, työkalu on suunniteltu tilaus- ja kanta-asiakasdatalle.
 
-Näin jokaisen uuden asiakkaan datan ensikatsaus hoituu paljon nopeammin.
+Näin uuden asiakkaan datan läpikäynti nopeutuu huomattavasti.
 
 Johtopäätökseni perustuvat julkisiin tietoihin, joten osa niistä on oletuksia.
 
 ## Mikä sovellus on
 
-Selaimessa toimiva työkalu, johon ladataan verkkokaupan tai kassajärjestelmän vienti. Se vastaa kolmeen kysymykseen:
+Selaimessa toimiva työkalu, johon ladataan yrityksen tilaus- ja asiakasdata CSV- tai Excel-tiedostona. Se vastaa kolmeen kysymykseen:
 
 1. **Onko data kunnossa?**
-   11 tarkistusta: puuttuvat asiakastunnisteet, tuplarivit, virheelliset päivämäärät ja summat, poikkeavat summat, duplikaattiasiakkaat, puuttuvat sähköpostit ja markkinointiluvat. Tuloksena laatupisteet (0–100) ja arvosana.
+   Työkalu tekee datalle 11 tarkistusta. Se etsii esimerkiksi puuttuvat asiakastunnisteet, tuplarivit, virheelliset päivämäärät ja summat, poikkeavat summat sekä asiakkaat, jotka on kirjattu kahteen kertaan. Lisäksi se tarkistaa, kuinka monelta asiakkaalta puuttuu sähköposti tai markkinointilupa. Tuloksena on laatupisteet asteikolla 0–100 ja arvosana.
 2. **Keistä asiakkaista liikevaihto tulee?**
-   RFM-segmentointi: asiakkaat ryhmitellään sen mukaan, kuinka äskettäin, kuinka usein ja kuinka paljon he ostavat (esim. *Parhaat asiakkaat*, *Poistumisvaarassa*, *Passiiviset*).
-3. **Mikä automaatio kannattaa rakentaa ensimmäisenä?**
-   Jokaiselle segmentille suositeltu toimenpide ja arvioitu lisämyynti euroina. Segmentit voi ladata CSV-tiedostona esimerkiksi Klaviyoon tai Custobariin.
+   Asiakkaat jaetaan ryhmiin sen mukaan, milloin he ovat viimeksi ostaneet, kuinka usein he ostavat ja kuinka paljon he ostavat yhteensä (RFM-segmentointi). Ryhmiä ovat esimerkiksi *Parhaat asiakkaat*, *Poistumisvaarassa* ja *Passiiviset*.
+3. **Mistä automaatiosta kannattaa aloittaa?**
+   Työkalu ehdottaa jokaiselle ryhmälle sopivaa toimenpidettä ja arvioi, kuinka paljon lisämyyntiä se voisi tuoda. Asiakkaiden ryhmät voi ladata CSV-tiedostona ja tuoda esimerkiksi Klaviyoon tai Custobariin.
 
-**Ominaisuuksia**
-- Toimii eri järjestelmien vienneillä: sarakkeet tunnistetaan automaattisesti (testattu mm. Custobar-, Shopify-, Klaviyo- ja kassajärjestelmämuodoilla).
-- Useaan tiedostoon jaettu data yhdistetään automaattisesti yhteisten sarakkeiden avulla.
-- Ymmärtää suomalaiset muodot (puolipiste, desimaalipilkku, 24.11.2025) ja senteissä olevat summat.
-- Perutut ja palautetut tilaukset jätetään pois.
-- Konversio-oletuksia voi säätää omien kampanjatulosten mukaan.
+**Ominaisuudet**
+- Työkalu toimii eri järjestelmistä ladatuilla tiedostoilla ja tunnistaa sarakkeet automaattisesti. Sitä on testattu itse tehdyillä testitiedostoilla, jotka jäljittelevät Custobarin, Shopifyn, Klaviyon ja kassajärjestelmän tiedostomuotoja, sekä kahdella julkisella verkkokauppa-aineistolla.
+- Jos data on jaettu useaan tiedostoon, työkalu yhdistää ne automaattisesti.
+- Työkalu ymmärtää suomalaiset tiedostomuodot, kuten desimaalipilkun ja päivämäärät muodossa 24.11.2025, sekä senteissä ilmoitetut summat.
+- Perutut ja palautetut tilaukset jätetään laskelmista pois.
+- Lisämyyntiarvion oletuksia voi muuttaa omien kampanjatulosten perusteella.
 
 ---
 
