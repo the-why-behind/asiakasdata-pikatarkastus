@@ -15,7 +15,7 @@ https://github.com/user-attachments/assets/4763de53-4c4a-43bf-a06f-53a3ed687224
 ## Ongelma ja ratkaisu
 
 ### Taustatoedot
-Tutustuin 70/30 Digitaliin yrityksen julkisten tietojen kautta. Yritys kertoo olevansa Suomen ainoa markkinointitoimisto, joka keskittyy kokonaan asiakkaidensa omaan dataan. Sen palveluihin kuuluvat muun muassa asiakasdatan auditointi ja segmentointi. Asiakkaista suuri osa on vähittäiskauppoja, kuten Robers Coffee ja Pentik. Työntekijöitä yrityksessä on 1–10, eli kyse on pienestä yrityksestä.
+Tutustuin 70/30 Digitaliin yrityksen julkisten tietojen kautta. Yritys kertoo olevansa Suomen ainoa markkinointitoimisto, joka keskittyy kokonaan asiakkaidensa omaan dataan. Sen palveluihin kuuluvat muun muassa asiakasdatan auditointi ja segmentointi. Asiakkaina on muun muassa vähittäiskauppoja, kuten Robers Coffee ja Pentik. Työntekijöitä yrityksessä on 1–10, eli kyse on pienestä yrityksestä.
 
 ### Ongelma lyhyesti
 Ennen kuin asiakkaalle voi suunnitella automaatioita tai kanta-asiakasohjelmaa, on selvitettävä, onko data käyttökelpoista ja keitä asiakkaat ovat. Tämä vaihe toistuu jokaisen asiakkaan kohdalla lähes samanlaisena, ja pienessä tiimissä se on pois varsinaisesta asiantuntijatyöstä.
