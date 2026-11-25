@@ -8,7 +8,7 @@ Ei tarvitse kirjautua tai asentaa mitään, sovellus aukeaa suoraan selaimessa.
 
 ---
 
-## Miksi tein tämän
+## Ongelma ja ratkaisu
 
 Tutustuin 70/30 Digitaliin yrityksen julkisten tietojen kautta. Yritys kertoo olevansa Suomen ainoa markkinointitoimisto, joka keskittyy kokonaan asiakkaidensa omaan dataan. Sen palveluihin kuuluvat muun muassa asiakasdatan auditointi ja segmentointi. Asiakkaista suuri osa on vähittäiskauppoja, kuten Robers Coffee ja Pentik. Työntekijöitä yrityksessä on 1–10, eli kyse on pienestä yrityksestä.
 
