@@ -64,27 +64,18 @@ Selaimessa toimiva työkalu, johon ladataan yrityksen tilaus- ja asiakasdata CSV
 1. Lataa testitiedostot tämän sivun **testidata**-kansiosta (avaa tiedosto ja paina oikeasta yläkulmasta latausnuolta).
    - **A – verkkokauppa:** `A_shopify_orders.csv` (tilaukset) ja `A_klaviyo_profiles.csv` (asiakkaat ja luvat)
    - **B – kassajärjestelmä:** `B_kassa_kuitit.csv` (kuitit) ja `B_kassa_asiakasrekisteri.csv` (asiakasrekisteri)
-
-🎬 **VIDEO 2 TÄHÄN** – testitiedostojen lataaminen GitHubista (n. 10 s)
-
 2. Valitse sovelluksen vasemmasta sivupalkista **Lataa oma data**.
 3. Lataa **tilaustiedosto** kenttään **1. Tilausdata**.
 4. Lataa **asiakastiedosto** kenttään **2. Asiakasdata**.
-   *Muistisääntö: tilaukset ylös, asiakkaat alas.*
-
-🎬 **VIDEO 3 TÄHÄN** – tiedostojen lataaminen oikeisiin kenttiin (n. 20 s)
-
 5. Tarkista kohdasta **Tilausdatan sarakkeet**, että sovellus valitsi oikeat sarakkeet (asiakastunniste, päivämäärä, summa). Yleensä ne ovat valmiiksi oikein.
 6. Vieritä alas tuloksiin.
-
-🎬 **VIDEO 4 TÄHÄN** – sarakevalintojen tarkistus ja tulokset (n. 20 s)
 
 ### Lisäksi voit kokeilla
 
 - **Konversio-oletukset:** avaa sivupalkista *Lisäasetukset* ja liikuta säätimiä – Potentiaali-sarake päivittyy heti.
 - **Segmenttien lataus:** paina sivun lopusta *Lataa asiakkaiden segmentit (CSV)*.
 
-🎬 **VIDEO 5 TÄHÄN** – säätimet ja segmenttien lataus (n. 15 s)
+https://github.com/user-attachments/assets/11a158c7-68ef-4c2e-848b-87186640b8da
 
 ---
 
