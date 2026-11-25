@@ -85,9 +85,20 @@ Ladattua dataa käsitellään vain istunnon ajan, eikä sitä tallenneta. Kaikki
 
 ## Näin tulokset lasketaan
 
-- **Laatupisteet:** jokaisella tarkistuksella on oma painoarvonsa sen mukaan, kuinka tärkeä se on. Pisteitä vähennetään sen mukaan, kuinka suuri osa datasta on virheellistä. Jo pieni virhe näkyy: jos virheellisiä on 2 %, tarkistuksen painosta vähennetään 10 %, ja jos 20 % tai enemmän, koko paino. Lisäksi jokainen löydetty ongelmatyyppi vähentää kaksi pistettä, koska monta erilaista virhettä viittaa ongelmiin tiedonkeruussa. Arvosana on *hyvä*, kun pisteitä on vähintään 90, *kohtalainen*, kun niitä on 75–89, ja *heikko*, kun niitä on alle 75.
-- **Asiakasryhmät (RFM):** jokainen asiakas saa kolmet pisteet asteikolla 1–5 sen perusteella, milloin hän on viimeksi ostanut (R), kuinka usein hän ostaa (F) ja kuinka paljon hän ostaa yhteensä (M). Pisteet annetaan suhteessa muihin asiakkaisiin. Ryhmä määräytyy R- ja F-pisteiden perusteella. Laskennan päivämääränä käytetään datan viimeisintä tilauspäivää, joten myös vanhempaa dataa voi tarkastella.
-- **Lisämyyntiarvio:** arvio lasketaan kertomalla keskenään ryhmän asiakasmäärä, markkinointiluvan antaneiden osuus, oletettu ostoprosentti ja keskiostos. Ostoprosentin oletuksia voi muuttaa, koska todelliset luvut selviävät vasta yrityksen omista aiemmista kampanjoista.
+- **Laatupisteet:** työkalu aloittaa 100 pisteestä ja vähentää pisteitä jokaisesta löydetystä ongelmasta. Mitä enemmän virheitä datassa on, sitä enemmän pisteitä vähennetään. Tärkeistä ongelmista, kuten puuttuvista markkinointiluvista, vähennetään enemmän pisteitä kuin pienistä. Lisäksi jokainen eri ongelmatyyppi vähentää kaksi pistettä.
+  - 90–100 pistettä: *hyvä*
+  - 75–89 pistettä: *kohtalainen*
+  - alle 75 pistettä: *heikko*
+- **Asiakasryhmät (RFM):** jokainen asiakas pisteytetään kolmella tavalla asteikolla 1–5:
+  - **R:** milloin asiakas on viimeksi ostanut
+  - **F:** kuinka usein asiakas ostaa
+  - **M:** kuinka paljon asiakas ostaa yhteensä
+Pisteet annetaan vertaamalla asiakasta muihin saman datan asiakkaisiin. Asiakkaan ryhmä määräytyy R- ja F-pisteiden perusteella. Laskennassa "tänään" tarkoittaa datan viimeisintä tilauspäivää, joten työkalu toimii myös vanhemmalla datalla.
+- **Lisämyyntiarvio:** arvio kertoo, kuinka paljon lisämyyntiä yksi kampanja voisi tuoda. Se lasketaan näin:
+
+  *asiakkaiden määrä × markkinointiluvan antaneiden osuus × oletettu ostoprosentti × keskiostos*
+
+  Ostoprosentti on oletus, koska todelliset luvut selviävät vasta yrityksen omista kampanjoista. Siksi sitä voi muuttaa sivupalkin lisäasetuksista.
 
 ## Testattu datalla
 
