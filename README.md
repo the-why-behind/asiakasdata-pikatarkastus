@@ -27,7 +27,7 @@ Näin uuden asiakkaan datan läpikäynti nopeutuu huomattavasti.
 
 Johtopäätökseni perustuvat julkisiin tietoihin, joten osa niistä on oletuksia.
 
-## Mikä sovellus on
+## Näin työkalu toimii
 
 Selaimessa toimiva työkalu, johon ladataan yrityksen tilaus- ja asiakasdata CSV- tai Excel-tiedostona. Se vastaa kolmeen kysymykseen:
 
@@ -49,17 +49,15 @@ Selaimessa toimiva työkalu, johon ladataan yrityksen tilaus- ja asiakasdata CSV
 
 ## Näin kokeilet sovellusta
 
-### Vaihtoehto 1: Esimerkkidata (1 minuutti)
+### Vaihtoehto 1: Esimerkkidata (noin minuutti)
 
 1. Avaa https://asiakasdata-pikatarkastus.streamlit.app/
-   *Jos sivulla lukee "Yes, get this app back up!", paina painiketta ja odota noin 30 sekuntia – sovellus on ollut lepotilassa.*
-2. Sovellus aukeaa valmiiksi esimerkkidatalla: kuvitteellinen suomalainen sisustus- ja lahjatavaraketju (verkkokauppa + viisi myymälää, kanta-asiakasohjelma) Custobarin vientimuodossa.
-3. Vieritä sivua alaspäin ja katso kolme osiota:
-   - **1. Datan laatu** – mitä datassa on vialla
-   - **2. Asiakassegmentit** – keistä asiakkaista liikevaihto tulee
-   - **3. Suositellut automaatiot** – mistä kannattaa aloittaa
-
-🎬 **VIDEO 1 TÄHÄN** – sovelluksen avaaminen ja vierittäminen osioiden läpi (n. 20 s)
+   *Jos sivulla lukee "Yes, get this app back up!", työkalu on ollut lepotilassa. Paina painiketta ja odota noin 30 sekuntia.*
+2. Työkalu avautuu valmiiksi esimerkkidatan kanssa. Data on kuvitteellisen suomalaisen sisustus- ja lahjatavaraketjun, jolla on verkkokauppa, viisi myymälää ja kanta-asiakasohjelma. Data on samassa muodossa kuin Custobarista ladattu tiedosto.
+3. Vieritä sivua alaspäin. Tulokset näkyvät kolmessa osiossa:
+   - **1. Datan laatu:** mitä datassa on vialla
+   - **2. Asiakassegmentit:** keistä asiakkaista liikevaihto tulee
+   - **3. Suositellut automaatiot:** mistä kannattaa aloittaa
 
 ### Vaihtoehto 2: Oma tai testidata
 
@@ -119,11 +117,3 @@ Python, pandas, Streamlit ja Altair. Sovellus pyörii Streamlit Community Cloudi
 | `data/` | Esimerkkidata (Custobar-muoto) |
 | `testidata/` | Testitiedostot A ja B |
 | `tools/generate_custobar_data.py` | Esimerkkidatan luonti |
-
-**Ajo omalla koneella**
-```
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-streamlit run app.py
-```
