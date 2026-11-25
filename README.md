@@ -49,7 +49,7 @@ Selaimessa toimiva työkalu, johon ladataan yrityksen tilaus- ja asiakasdata CSV
 
 ## Näin kokeilet sovellusta
 
-### Vaihtoehto 1: Esimerkkidata (noin minuutti)
+### Vaihtoehto 1: Esimerkkidata
 
 1. Avaa https://asiakasdata-pikatarkastus.streamlit.app/
    *Jos sivulla lukee "Yes, get this app back up!", työkalu on ollut lepotilassa. Paina painiketta ja odota noin 30 sekuntia.*
@@ -62,8 +62,8 @@ Selaimessa toimiva työkalu, johon ladataan yrityksen tilaus- ja asiakasdata CSV
 ### Vaihtoehto 2: Oma tai testidata
 
 1. Lataa testitiedostot tämän sivun **testidata**-kansiosta (avaa tiedosto ja paina oikeasta yläkulmasta latausnuolta).
-   - **A – verkkokauppa:** `A_shopify_orders.csv` (tilaukset) ja `A_klaviyo_profiles.csv` (asiakkaat ja luvat)
-   - **B – kassajärjestelmä:** `B_kassa_kuitit.csv` (kuitit) ja `B_kassa_asiakasrekisteri.csv` (asiakasrekisteri)
+   - **A – verkkokauppa:** [A_shopify_orders.csv](testidata/A_shopify_orders.csv) (tilaukset) ja [A_klaviyo_profiles.csv](testidata/A_klaviyo_profiles.csv) (asiakkaat ja markkinointiluvat)
+   - **B – kassajärjestelmä:** [B_kassa_kuitit.csv](testidata/B_kassa_kuitit.csv) (kuitit) ja [B_kassa_asiakasrekisteri.csv](testidata/B_kassa_asiakasrekisteri.csv) (asiakasrekisteri)
 2. Valitse sovelluksen vasemmasta sivupalkista **Lataa oma data**.
 3. Lataa **tilaustiedosto** kenttään **1. Tilausdata**.
 4. Lataa **asiakastiedosto** kenttään **2. Asiakasdata**.
@@ -83,11 +83,11 @@ https://github.com/user-attachments/assets/11a158c7-68ef-4c2e-848b-87186640b8da
 
 Ladattua dataa käsitellään vain istunnon ajan, eikä sitä tallenneta. Kaikki tämän sivun esimerkki- ja testidata on kuvitteellista. Omaa dataa kokeiltaessa nimet ja muut suorat tunnisteet kannattaa poistaa ennen latausta – asiakasnumero riittää.
 
-## Laskentaperiaatteet
+## Näin tulokset lasketaan
 
-- **Laatupisteet:** ongelman koko (2 % virhe vie 10 % tarkistuksen painosta, 20 % koko painon) ja jokainen löydetty ongelmatyyppi −2 pistettä. Hyvä ≥ 90, kohtalainen 75–89, heikko < 75.
-- **RFM:** R, F ja M pisteytetään 1–5 persentiilien mukaan; segmentit muodostetaan R- ja F-pisteistä. "Tänään" = viimeisin tilaus datassa + 1 päivä.
-- **Potentiaali** = asiakkaat × markkinointilupa × oletettu konversio × keskiostos. Konversio-oletukset ovat tarkoituksella säädettäviä, koska oikeat luvut tulevat asiakkaan omasta kampanjahistoriasta.
+- **Laatupisteet:** jokaisella tarkistuksella on oma painoarvonsa sen mukaan, kuinka tärkeä se on. Pisteitä vähennetään sen mukaan, kuinka suuri osa datasta on virheellistä. Jo pieni virhe näkyy: jos virheellisiä on 2 %, tarkistuksen painosta vähennetään 10 %, ja jos 20 % tai enemmän, koko paino. Lisäksi jokainen löydetty ongelmatyyppi vähentää kaksi pistettä, koska monta erilaista virhettä viittaa ongelmiin tiedonkeruussa. Arvosana on *hyvä*, kun pisteitä on vähintään 90, *kohtalainen*, kun niitä on 75–89, ja *heikko*, kun niitä on alle 75.
+- **Asiakasryhmät (RFM):** jokainen asiakas saa kolmet pisteet asteikolla 1–5 sen perusteella, milloin hän on viimeksi ostanut (R), kuinka usein hän ostaa (F) ja kuinka paljon hän ostaa yhteensä (M). Pisteet annetaan suhteessa muihin asiakkaisiin. Ryhmä määräytyy R- ja F-pisteiden perusteella. Laskennan päivämääränä käytetään datan viimeisintä tilauspäivää, joten myös vanhempaa dataa voi tarkastella.
+- **Lisämyyntiarvio:** arvio lasketaan kertomalla keskenään ryhmän asiakasmäärä, markkinointiluvan antaneiden osuus, oletettu ostoprosentti ja keskiostos. Ostoprosentin oletuksia voi muuttaa, koska todelliset luvut selviävät vasta yrityksen omista aiemmista kampanjoista.
 
 ## Testattu datalla
 
