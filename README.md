@@ -21,7 +21,7 @@ Tutustuin 70/30 Digitaliin yrityksen julkisten tietojen kautta. Yritys kertoo ol
 Ennen kuin asiakkaalle voi suunnitella automaatioita tai kanta-asiakasohjelmaa, on selvitettävä, onko data käyttökelpoista ja keitä asiakkaat ovat. Tämä vaihe toistuu jokaisen asiakkaan kohdalla lähes samanlaisena, ja pienessä tiimissä se on pois varsinaisesta asiantuntijatyöstä.
 
 ### Ratkaisu
-Siksi tein työkalun, joka hoitaa auditoinnin ja segmentoinnin ensimmäisen vaiheen automaattisesti. Työkalu ryhmittelee asiakkaat ja tekee niistä listan, jota voi käyttää jatkotyössä. Koska yrityksen asiakkaat ovat pääosin vähittäiskauppoja, työkalu on suunniteltu tilaus- ja kanta-asiakasdatalle.
+Siksi tein työkalun, joka hoitaa auditoinnin ja segmentoinnin ensimmäisen vaiheen automaattisesti. Työkalu ryhmittelee asiakkaat ja tekee niistä listan, jota voi käyttää jatkotyössä. Koska yrityksen asiakkaisiin kuuluu vähittäiskauppoja, työkalu on suunniteltu tilaus- ja kanta-asiakasdatalle.
 
 Näin uuden asiakkaan datan läpikäynti nopeutuu huomattavasti.
 
