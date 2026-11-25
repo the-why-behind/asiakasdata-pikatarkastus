@@ -93,6 +93,7 @@ Ladattua dataa käsitellään vain istunnon ajan, eikä sitä tallenneta. Kaikki
   - **R:** milloin asiakas on viimeksi ostanut
   - **F:** kuinka usein asiakas ostaa
   - **M:** kuinka paljon asiakas ostaa yhteensä
+
    Pisteet annetaan vertaamalla asiakasta muihin saman datan asiakkaisiin. Asiakkaan ryhmä määräytyy R- ja F-pisteiden perusteella. Laskennassa "tänään" tarkoittaa datan viimeisintä tilauspäivää, joten työkalu toimii myös vanhemmalla datalla.
 - **Lisämyyntiarvio:** arvio kertoo, kuinka paljon lisämyyntiä yksi kampanja voisi tuoda. Se lasketaan näin:
 
