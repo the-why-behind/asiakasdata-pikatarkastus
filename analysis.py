@@ -10,11 +10,11 @@ import pandas as pd
 SEGMENT_ORDER = ["Parhaat asiakkaat", "Vakioasiakkaat", "Uudet asiakkaat", "Poistumisvaarassa", "Passiiviset", "Satunnaiset ostajat"]
 
 SEGMENT_INFO = {
-    "Parhaat asiakkaat": ("Ostaneet äskettäin ja usein", "VIP-/kanta-asiakasetu, ennakkomyynti", 0.05),
-    "Vakioasiakkaat": ("Ostavat säännöllisesti", "Ristiinmyynti- ja suosittelukampanja", 0.08),
+    "Parhaat asiakkaat": ("Ostaneet äskettäin ja usein", "VIP-etu tai ennakkomyynti kanta-asiakkaille", 0.05),
+    "Vakioasiakkaat": ("Ostavat säännöllisesti", "Lisämyynti- ja suosittelukampanja", 0.08),
     "Uudet asiakkaat": ("Ostaneet äskettäin, mutta vasta vähän", "Toisen oston kannustin (onboarding-flow)", 0.10),
-    "Poistumisvaarassa": ("Ostivat ennen usein, nyt hiljaista", "Win-back-flow: muistutus + etu", 0.15),
-    "Passiiviset": ("Ostaneet harvoin ja kauan sitten", "Reaktivointi tai listan siivous", 0.05),
+    "Poistumisvaarassa": ("Ostivat ennen usein, mutta eivät ole ostaneet vähään aikaan", "Win-back-flow: muistutus ja etu", 0.15),
+    "Passiiviset": ("Ostaneet harvoin ja kauan sitten", "Uudelleenaktivointi tai poisto markkinointilistalta", 0.05),
     "Satunnaiset ostajat": ("Ei selvää ostorytmiä", "Yleinen uutiskirje", 0.02),
 }
 

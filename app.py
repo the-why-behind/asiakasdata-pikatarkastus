@@ -55,6 +55,11 @@ CURRENCIES = {"€ – euro": "€", "£ – Englannin punta": "£", "$ – doll
 CUR = "€"  # päivitetään, kun käyttäjä valitsee valuutan
 
 
+def fi_pct(x: float, decimals: int = 1) -> str:
+    """Prosentti suomalaisittain, esim. 6,3 %."""
+    return f"{x * 100:.{decimals}f}".replace(".", ",") + " %"
+
+
 def eur(v: float) -> str:
     """Muotoilee rahasumman valitulla valuutalla, esim. 12 345 €."""
     return f"{v:,.0f} {CUR}".replace(",", " ")
@@ -108,8 +113,8 @@ with st.sidebar:
                        mime="text/csv", width="stretch")
 
     with st.expander("Lisäasetukset: konversio-oletukset"):
-        st.caption("Vapaaehtoinen. Kuinka moni sadasta tavoitettavasta asiakkaasta ostaa "
-                   "kampanjan ansiosta. Vaikuttaa vain Potentiaali-sarakkeeseen. "
+        st.caption("Vapaaehtoinen. Arvio siitä, kuinka moni sadasta tavoitettavasta asiakkaasta "
+                   "ostaa kampanjan ansiosta. Vaikuttaa vain Potentiaali-sarakkeeseen. "
                    "Jos tiedät luvut aiemmista kampanjoista, syötä ne tähän.")
         conversion = {
             seg: st.slider(seg, 0, 30, int(SEGMENT_INFO[seg][2] * 100), format="%d %%",
@@ -130,8 +135,9 @@ st.markdown("Lataa verkkokaupan tai kassajärjestelmän tilausdata ja näe kolme
 
 customers = None
 if source == "Esimerkkidata":
-    st.caption("Käytössä kuvitteellinen suomalainen sisustus- ja lahjatavaraketju (verkkokauppa ja "
-               "viisi myymälää, kanta-asiakasohjelma) Custobarin vientimuodossa, 2023–2026. "
+    st.caption("Käytössä on kuvitteellisen suomalaisen sisustus- ja lahjatavaraketjun data vuosilta "
+               "2023–2026. Ketjulla on verkkokauppa, viisi myymälää ja kanta-asiakasohjelma, ja data on "
+               "samassa muodossa kuin Custobarista ladattu tiedosto. "
                "Datassa on tyypillisiä vähittäiskaupan ongelmia. Valitse sivupalkista "
                "*Lataa oma data* kokeillaksesi omalla datallasi.")
     with st.expander("Lataa esimerkkitiedostot itsellesi"):
@@ -145,9 +151,9 @@ if source == "Esimerkkidata":
     customers = prepare_customers(pd.read_csv(DATA / "custobar_customers.csv"), "external_id",
                                   "email", "can_email")
 else:
-    up_o = st.file_uploader("**1. Tilausdata** (pakollinen) – yksi tai useampi CSV/Excel",
+    up_o = st.file_uploader("**1. Tilausdata** (pakollinen) – yksi tai useampi CSV- tai Excel-tiedosto",
                             type=["csv", "xlsx"], key="orders", accept_multiple_files=True,
-                            help="Jos data on jaettu useaan tiedostoon (esim. tilaukset, maksut ja "
+                            help="Jos data on jaettu useaan tiedostoon (esimerkiksi tilaukset, maksut ja "
                                  "asiakkaat), lataa ne kaikki – sovellus yhdistää ne yhteisten "
                                  "sarakkeiden avulla.")
     if not up_o:
@@ -183,7 +189,7 @@ kassajärjestelmäviennille. Mallin saat sivupalkista.
         with c2:
             col_date = pick("Tilauspäivä", cols, "date", f"o_date_{k}")
         with c3:
-            col_order = pick("Tilausnumero (jos rivitasoista dataa)", cols, "order",
+            col_order = pick("Tilausnumero (jos tilauksella on useita rivejä)", cols, "order",
                              f"o_order_{k}", optional=True,
                              help="Jos samalla tilauksella on useita rivejä, ne yhdistetään.")
         value_mode = st.radio("Tilauksen arvo", ["Summa-sarake", "Määrä × hinta"], horizontal=True,
@@ -198,7 +204,7 @@ kassajärjestelmäviennille. Mallin saat sivupalkista.
             col_price = pick("Yksikköhinta", cols, "price", f"o_price_{k}")
         col_status = pick("Tilauksen tila (perutut jätetään pois)", cols, "status", f"o_status_{k}",
                           optional=True,
-                          help="Rivit, joiden tila sisältää esim. canceled/peruttu, jätetään pois.")
+                          help="Rivit, joiden tilana on esimerkiksi canceled tai peruttu, jätetään pois.")
         cur_guess = guess_currency(raw_o)
         cur_label = st.selectbox("Valuutta", list(CURRENCIES), key=f"o_cur_{k}",
                                  index=list(CURRENCIES).index(cur_guess),
@@ -208,7 +214,7 @@ kassajärjestelmäviennille. Mallin saat sivupalkista.
         looks_custobar = any(str(c).startswith("sale_") for c in cols)
         cents = st.checkbox("Summat ovat senteissä (esim. Custobar-vienti)", value=looks_custobar,
                             key=f"o_cents_{k}",
-                            help="Custobar ja monet kassajärjestelmät tallentavat 12,00 € muodossa 1200.")
+                            help="Custobar ja monet kassajärjestelmät tallentavat summan 12,00 € muodossa 1200.")
 
     try:
         orders, report = prepare_orders(raw_o, col_cust, col_date, value=col_value,
@@ -229,11 +235,11 @@ kassajärjestelmäviennille. Mallin saat sivupalkista.
                 cust_c = pick("Asiakastunniste (sama kuin tilauksissa)", cc, "customer", f"c_cust_{kc}")
                 email_c = pick("Sähköposti", cc, "email", f"c_email_{kc}", optional=True)
                 consent_c = pick("Markkinointilupa", cc, "consent", f"c_consent_{kc}", optional=True,
-                                 help="Arvot kuten true/1/kyllä/yes tulkitaan luvaksi.")
+                                 help="Arvot, kuten true, 1, kyllä tai yes, tulkitaan luvaksi.")
             customers = prepare_customers(raw_c, cust_c, email_c, consent_c)
             match = customers["customer_id"].isin(orders["customer_id"]).mean()
             if match < 0.1:
-                st.warning(f"Vain {match:.0%} asiakkaista löytyy tilausdatasta. "
+                st.warning(f"Vain {fi_pct(match, 0)} asiakkaista löytyy tilausdatasta. "
                            "Tarkista, että asiakastunniste on sama molemmissa tiedostoissa.")
         except Exception as e:  # noqa: BLE001
             st.error(f"Asiakasdatan käsittely epäonnistui: {e}")
@@ -260,17 +266,17 @@ if orders.empty:
     st.stop()
 if source != "Esimerkkidata":
     if report.get("cancelled"):
-        st.caption(f"Perutut tilaukset jätettiin pois ({report['cancelled']:.1%} riveistä).")
+        st.caption(f"Perutut tilaukset jätettiin pois ({fi_pct(report['cancelled'])} riveistä).")
     if report.get("duplicate_rows"):
-        st.caption(f"Tuplarivit poistettiin ({report['duplicate_rows']:.1%} riveistä), "
+        st.caption(f"Tuplarivit poistettiin ({fi_pct(report['duplicate_rows'])} riveistä), "
                    "jotta myyntiä ei lasketa kahteen kertaan.")
     if report.get("order_level_total"):
         st.info("Summa-sarake näyttää olevan koko tilauksen summa, joka toistuu jokaisella "
-                "rivillä – se laskettiin kerran per tilaus.")
+                "rivillä, joten se laskettiin vain kerran tilausta kohden.")
     whole = (orders["order_value"] % 1 == 0).mean() > 0.95  # sentit näkyvät kokonaislukuina
     if not cents and whole and orders["order_value"].median() > 1000:
         st.info("Tilausten mediaani on yli 1 000 €. Jos summat ovat senteissä, "
-                "rastita *Summat ovat senteissä* sarakevalinnoista.")
+                "valitse sarakevalinnoista kohta *Summat ovat senteissä*.")
     repeat = orders.groupby("customer_id")["order_id"].nunique()
     if len(repeat) > 100 and (repeat > 1).mean() < 0.01:
         st.info("Lähes jokaisella asiakkaalla on vain yksi tilaus. Jos datassa on pysyvämpi "
@@ -387,7 +393,7 @@ st.altair_chart(
 )
 if "Parhaat asiakkaat" in s.index:
     m = s.loc["Parhaat asiakkaat"]
-    st.markdown(f"**Parhaat asiakkaat** ovat {m['asiakas_osuus'] * 100:.0f} % asiakkaista mutta tuovat "
+    st.markdown(f"**Parhaat asiakkaat** ovat {m['asiakas_osuus'] * 100:.0f} % asiakkaista, mutta tuovat "
                 f"{m['lv_osuus'] * 100:.0f} % liikevaihdosta.")
 
 
@@ -412,14 +418,14 @@ with st.expander("Mitä segmentit tarkoittavat?"):
         st.markdown(f"- **{seg_name}:** {SEGMENT_INFO[seg_name][0].lower()}")
 
 top = show.iloc[0]
-st.success(f"**Suurin nopea voitto: {top['segment']}** – {top['toimenpide']}. "
+st.success(f"**Paras ensimmäinen toimenpide: {top['segment']}** – {top['toimenpide']}. "
            f"Arvioitu lisämyynti ~{eur(round(top['potentiaali_eur'], -1))} yhdellä kampanjalla.")
 if not has_consent:
-    st.caption("Ilman lupatietoja potentiaali olettaa, että kaikki asiakkaat ovat tavoitettavissa.")
+    st.caption("Lupatietoja ei ole, joten potentiaalissa oletetaan, että kaikki asiakkaat ovat tavoitettavissa.")
 
 export = r.reset_index()[["customer_id", "segment", "recency", "frequency", "monetary"]]
 export.columns = ["customer_id", "segmentti", "paivia_viime_ostosta", "tilauksia", "ostot_yht"]
-st.download_button("Lataa asiakkaiden segmentit (CSV) – esim. tuontiin Klaviyoon tai Custobariin",
+st.download_button("Lataa asiakkaiden segmentit (CSV) esimerkiksi Klaviyoon tai Custobariin tuotavaksi",
                    export.to_csv(index=False).encode("utf-8"), "segmentit.csv", mime="text/csv")
 
 st.divider()
